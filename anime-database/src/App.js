@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar';
 
 function App() {
   const [animeList, setAnimeList] = useState([]);
+  const [recentAnime, setRecentAnime] = useState([]);
   const [topAnime, setTopAnime] = useState([]);
   const [search, setSearch] = useState([]);
 

@@ -89,11 +89,28 @@ header {
 /////////////////////////////////////////////////////////
 
 sidebar {
+    display: flex;
     flex: 0 0 20%;
 
     flex-direction: column;
     width: 300px;
     background-color: #1639612c;
+
+    .selection-header {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .selection-choices {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+
+        .selection-choice {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
 }
 
 /////////////////////////////////////////////////////////
