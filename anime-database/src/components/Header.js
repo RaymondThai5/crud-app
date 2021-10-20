@@ -3,16 +3,16 @@ import React from 'react'
 function Header() {
     return (
         <header>
-            <div class="title">
-                <div class="title-text">The <strong>Anime</strong> Database</div>
+            <div className="title">
+                <div className="title-text">The <strong>Anime</strong> Database</div>
             </div>
-            <div class="navbar">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#">First</a></li>
-                    <li class="nav-item"><a href="#">Second</a></li>
-                    <li class="nav-item"><a href="#">Third</a></li>
+            <div className="navbar">
+                <ul className="nav-list">
+                    <li className="nav-item"><a href="#">First</a></li>
+                    <li className="nav-item"><a href="#">Second</a></li>
+                    <li className="nav-item"><a href="#">Third</a></li>
                 </ul>
-                <input type="text" placeholder="Search" class="search-bar"></input>
+                <input type="text" placeholder="Search" className="search-bar"></input>
             </div>
         </header>
     )
