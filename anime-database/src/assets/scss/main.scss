@@ -1,14 +1,27 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
-    font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
 }
 
 .content-area {
-    display: flex;
-    height: 88vh;
+  display: flex;
+  min-height: 88vh;
+}
+
+@keyframes animeTitleCard {
+  0% {
+    background-color: rgba(77, 70, 70, 0.719);
+    font-size: 18px;
+    // transform: translateY(-124px) scale(1.00);
+  }
+  100% {
+    background-color: rgba(15, 14, 14, 0.842);
+    font-size: 20px;
+    // transform: translateY(-124px) scale(1.05);;
+  }
 }
 
 /////////////////////////////////////////////////////////
@@ -18,68 +31,68 @@
 /////////////////////////////////////////////////////////
 
 header {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  height: 12vh;
+  background-color: rgba(44, 199, 104, 0.205);
+
+  h1 {
+    color: #aaa;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  strong {
+    color: #313131;
+  }
+
+  .title {
+    flex: 0 0 100%;
     display: flex;
-    flex-wrap: wrap;
-    padding-top: 10px;
-    height: 12vh;
-    background-color: rgba(44, 199, 104, 0.205);
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    height: 50px;
+    margin: 5px 5px 0 0;
+  }
 
-    h1 {
-        color: #AAA;
-        font-size: 36px;
-        font-weight: 400;
-        text-align: center;
-    }
+  .navbar {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+  }
 
-    strong {
-        color: #313131;
-    }
+  .nav-list {
+    display: flex;
+    list-style-type: none;
+    font-size: 20px;
+    border: 2px solid black;
+  }
 
-    .title {
-        flex: 0 0 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-        height: 50px;
-        margin: 5px 5px 0 0;
-    }
-    
-    .navbar {
-        display: flex;
-        flex: 1;
-        justify-content: space-between;
-    }
+  .nav-item {
+    text-align: center;
+    min-width: 100px;
+    border: 2px solid black;
+    padding: 5px;
 
-    .nav-list {
-        display: flex;
-        list-style-type: none;
-        font-size: 20px;
-        border: 2px solid black;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
+  }
 
-    .nav-item {
-        text-align: center;
-        min-width: 100px;
-        border: 2px solid black;
-        padding: 5px;
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-    }
-
-    .search-bar {
-        flex: 0 0 30%;
-        height: 80%;
-        align-self: center;
-        margin-right: 50px;
-        margin-left: 100px;
-        border-radius: 100px;
-        padding-left: 10px;
-        border: white;
-    }
+  .search-bar {
+    flex: 0 0 30%;
+    height: 80%;
+    align-self: center;
+    margin-right: 50px;
+    margin-left: 100px;
+    border-radius: 100px;
+    padding-left: 10px;
+    border: white;
+  }
 }
 
 /////////////////////////////////////////////////////////
@@ -89,28 +102,29 @@ header {
 /////////////////////////////////////////////////////////
 
 sidebar {
+  display: flex;
+  flex: 0 0 20%;
+
+  flex-direction: column;
+  width: 300px;
+  background-color: #1639612c;
+
+  .selection-header {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .selection-choices {
     display: flex;
-    flex: 0 0 20%;
-
     flex-direction: column;
-    width: 300px;
-    background-color: #1639612c;
+    margin: 0 auto;
 
-    .selection-header {
-        margin-bottom: 10px;
-        text-align: center;
+    .selection-choice {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
     }
-
-    .selection-choices {
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto;
-
-        .selection-choice {
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-    }
+  }
 }
 
 /////////////////////////////////////////////////////////
@@ -120,6 +134,58 @@ sidebar {
 /////////////////////////////////////////////////////////
 
 main {
-    flex: 1 1 auto;
-    background-color: #832b2b21;
+  flex: 1 1 auto;
+  background-color: #832b2b21;
+
+  .anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 320px);
+    justify-content: center;
+
+    .empty-picture {
+      margin: 30px;
+      width: 250px;
+      height: 400px;
+    }
+
+    .anime-content {
+      margin: 30px;
+      overflow: hidden;
+      max-width: 250px;
+      max-height: 400px;
+
+      &:hover > .anime-title {
+        animation-name: animeTitleCard;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+      }
+
+      .anime-content-picture {
+        width: 250px;
+        height: 400px;
+
+        transform-origin: 50% 65%;
+        transition: transform 0.5s ease-in-out;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+      .anime-title {
+        display: flex;
+        font-family: "comic sans ms";
+        font-size: 18px;
+        height: 120px;
+        position: absolute;
+        width: 250px;
+        transform: translateY(-124px);
+        color: white;
+        text-align: center;
+        background-color: rgba(77, 70, 70, 0.719);
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
 }

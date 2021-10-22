@@ -12,20 +12,19 @@ function App() {
 
   const [apiResponse, setApiResponse] = useState([]);
 
+  //Retrieve the top anime through an api call. The top anime will be displayed by default.
   const GetTopAnime = async () => {
-    // const temp = await fetch(`http://localhost:9000/testAPI`).then(
-      const temp = await fetch(`http://localhost:9000/anime/top-anime`).then(
-      (res) => res.json());
-      // setTopAnime(temp.top.splice(0,5));
-      setTopAnime(temp.top);
+    const temp = await fetch(`http://localhost:9000/anime/top-anime`)
+      .then((res) => res.json())
+      .then((data) => {
+        var parsedData = JSON.parse(data);
+        setTopAnime(parsedData.top);
+      });
   };
 
   useEffect(() => {
     GetTopAnime();
-  }, [])
-
-
-  console.log(topAnime);
+  }, []);
 
   return (
     <div className="App">
@@ -33,7 +32,7 @@ function App() {
 
       <div className="content-area">
         <Sidebar />
-        <MainContent />
+        <MainContent topAnime={topAnime} searchResults={search} />
       </div>
     </div>
   );

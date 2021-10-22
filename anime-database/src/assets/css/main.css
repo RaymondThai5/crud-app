@@ -1,31 +1,36 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-family: 'Fira Sans', sans-serif;
+  box-sizing: border-box;
+  font-family: "Fira Sans", sans-serif;
 }
 
 .content-area {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  height: 88vh;
+  min-height: 88vh;
+}
+
+@keyframes animeTitleCard {
+  0% {
+    background-color: rgba(77, 70, 70, 0.719);
+    font-size: 18px;
+  }
+  100% {
+    background-color: rgba(15, 14, 14, 0.842);
+    font-size: 20px;
+  }
 }
 
 header {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   padding-top: 10px;
   height: 12vh;
   background-color: rgba(44, 199, 104, 0.205);
 }
 
 header h1 {
-  color: #AAA;
+  color: #aaa;
   font-size: 36px;
   font-weight: 400;
   text-align: center;
@@ -36,38 +41,22 @@ header strong {
 }
 
 header .title {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  flex: 0 0 100%;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   font-size: 30px;
   height: 50px;
   margin: 5px 5px 0 0;
 }
 
 header .navbar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex: 1;
+  justify-content: space-between;
 }
 
 header .nav-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   list-style-type: none;
   font-size: 20px;
@@ -87,13 +76,9 @@ header .nav-item a {
 }
 
 header .search-bar {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 30%;
-          flex: 0 0 30%;
+  flex: 0 0 30%;
   height: 80%;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   margin-right: 50px;
   margin-left: 100px;
   border-radius: 100px;
@@ -102,16 +87,9 @@ header .search-bar {
 }
 
 sidebar {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 20%;
-          flex: 0 0 20%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex: 0 0 20%;
+  flex-direction: column;
   width: 300px;
   background-color: #1639612c;
 }
@@ -122,25 +100,70 @@ sidebar .selection-header {
 }
 
 sidebar .selection-choices {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin: 0 auto;
 }
 
 sidebar .selection-choices .selection-choice {
   margin-top: 10px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 main {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  flex: 1 1 auto;
   background-color: #832b2b21;
+}
+
+main .anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 320px);
+  justify-content: center;
+}
+
+main .anime-grid .empty-picture {
+  margin: 30px;
+  width: 250px;
+  height: 400px;
+}
+
+main .anime-grid .anime-content {
+  margin: 30px;
+  overflow: hidden;
+  max-width: 250px;
+  max-height: 400px;
+}
+
+main .anime-grid .anime-content:hover > .anime-title {
+  animation-name: animeTitleCard;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+main .anime-grid .anime-content .anime-content-picture {
+  width: 250px;
+  height: 400px;
+  transform-origin: 50% 65%;
+  transition: transform 0.5s ease-in-out;
+}
+
+main .anime-grid .anime-content .anime-content-picture:hover {
+  transform: scale(1.05);
+}
+
+main .anime-grid .anime-content .anime-title {
+  display: flex;
+  font-family: "comic sans ms";
+  font-size: 18px;
+  height: 120px;
+  position: absolute;
+  width: 250px;
+  transform: translateY(-124px);
+  color: white;
+  text-align: center;
+  background-color: rgba(77, 70, 70, 0.719);
+  justify-content: center;
+  align-items: center;
 }
 /*# sourceMappingURL=main.css.map */
