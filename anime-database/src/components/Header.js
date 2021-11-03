@@ -1,6 +1,20 @@
 import React from 'react'
 
-function Header() {
+function Header(props) {
+
+    const sendSearch = (e) => {
+        const searchQuery = e.target.value;
+
+        if (e.code == "Enter" && searchQuery!= props.search) {
+            if (e.target.value.length < 3) {
+                console.log('Needs to be at least three characters long') //Add warning sigh later on
+            } else {
+                props.setSearch(searchQuery);
+                props.getSearchAnime(searchQuery);
+            }
+        }
+    }
+
     return (
         <header>
             <div className="title">
@@ -12,7 +26,7 @@ function Header() {
                     <li className="nav-item"><a href="#">Second</a></li>
                     <li className="nav-item"><a href="#">Third</a></li>
                 </ul>
-                <input type="text" placeholder="Search" className="search-bar"></input>
+                <input id="search-bar" onKeyDown={e => sendSearch(e)} type="text" placeholder="Search" className="search-bar"></input>
             </div>
         </header>
     )

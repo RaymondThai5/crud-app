@@ -5,6 +5,11 @@
   font-family: "Fira Sans", sans-serif;
 }
 
+.app {
+  display: block;
+  width: 100vw;
+}
+
 .content-area {
   display: flex;
   min-height: 88vh;
@@ -99,16 +104,46 @@ sidebar .selection-header {
   text-align: center;
 }
 
+sidebar .selection-header .selection-buttons {
+  display: flex;
+}
+
+sidebar .selection-header .selection-buttons #next-select,
+sidebar .selection-header .selection-buttons #prev-select {
+  width: 100%;
+}
+
+sidebar .selection-header .selection-buttons #next-select:hover,
+sidebar .selection-header .selection-buttons #prev-select:hover {
+  color: green;
+  background-color: rgba(46, 81, 156, 0.514);
+}
+
 sidebar .selection-choices {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  font-size: 9px;
+  margin: 10px;
+  margin-top: 0px;
 }
 
 sidebar .selection-choices .selection-choice {
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
+  text-decoration: underline;
+  border: 1px solid rgba(69, 97, 46, 0.76);
+  border-radius: 100px;
+  background-color: rgba(55, 100, 87, 0.267);
+  padding: 3px;
+  box-shadow: 3px 3px 3px rgba(126, 112, 112, 0.61);
+}
+
+sidebar .selection-choices .selection-choice:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.815);
+  box-shadow: 1px 1px 1px rgba(126, 112, 112, 0.81);
 }
 
 main {
@@ -116,10 +151,113 @@ main {
   background-color: #832b2b21;
 }
 
+main #modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.568);
+  font-size: 50px;
+}
+
+main #modal .modal-content {
+  position: absolute;
+  background-color: #333030e1;
+  color: white;
+  padding: 30px;
+  border: 2px solid black;
+  width: 60vw;
+  min-height: 80vh;
+  font-size: 20px;
+  left: 29vw;
+  top: 15vh;
+}
+
+main #modal .modal-content .anime-title {
+  text-align: center;
+}
+
+main #modal .modal-content .anime-modal {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 70vh;
+  gap: 10px;
+}
+
+main #modal .modal-content .anime-modal .anime-single-picture {
+  flex: 1;
+  max-width: 250px;
+  max-height: 400px;
+  border: 2px solid black;
+}
+
+main #modal .modal-content .anime-modal .anime-single-description {
+  flex: 1;
+  max-height: 400px;
+  background-color: rgba(46, 30, 30, 0.74);
+  padding: 20px;
+  font-size: 18px;
+  overflow: hidden;
+}
+
+main #modal .modal-content .anime-modal .anime-single-score {
+  flex: 0 0 100%;
+  height: 50px;
+  background-color: #757575;
+}
+
+main #modal .modal-content .anime-modal .anime-single-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+main #modal .modal-content .anime-modal .anime-single-info .info-box {
+  width: 250px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.562);
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+}
+
+main #modal .modal-content .anime-modal .anime-single-info .episode-line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
+
+main #modal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+main #modal .close:hover, main #modal .close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 main .anime-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, 320px);
   justify-content: center;
+}
+
+main .anime-grid .no-result {
+  text-align: center;
+  font-size: 30px;
+  margin: 20px;
 }
 
 main .anime-grid .empty-picture {
